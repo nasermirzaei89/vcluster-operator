@@ -3,4 +3,13 @@ layout:
 - go.kubebuilder.io/v3
 projectName: vcluster-operator
 repo: github.com/nasermirzaei89/vcluster-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: nasermirzaei89.net
+  kind: VCluster
+  path: github.com/nasermirzaei89/vcluster-operator/api/v1alpha1
+  version: v1alpha1
 version: "3"
