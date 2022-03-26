@@ -1,0 +1,6 @@
+domain: nasermirzaei89.net
+layout:
+- go.kubebuilder.io/v3
+projectName: vcluster-operator
+repo: github.com/nasermirzaei89/vcluster-operator
+version: "3"
