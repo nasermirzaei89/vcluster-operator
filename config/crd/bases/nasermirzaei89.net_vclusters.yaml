@@ -35,9 +35,37 @@ spec:
           spec:
             description: VClusterSpec defines the desired state of VCluster
             properties:
-              foo:
-                description: Foo is an example field of VCluster. Edit vcluster_types.go
-                  to remove/update
+              chart:
+                properties:
+                  name:
+                    description: The virtual cluster chart name to use (default "vcluster")
+                    type: string
+                  repo:
+                    description: The virtual cluster chart repo to use (default "https://charts.loft.sh")
+                    type: string
+                  version:
+                    description: The virtual cluster chart version to use (e.g. v0.4.0)
+                      (default "0.7.1")
+                    type: string
+                type: object
+              disableIngressSync:
+                description: If true the virtual cluster will not sync any ingresses
+                type: boolean
+              distro:
+                description: 'Kubernetes distro to use for the virtual cluster. Allowed
+                  distros: k3s, k0s, k8s, eks (default "k3s")'
+                type: string
+              expose:
+                description: If true will create a load balancer service to expose
+                  the vcluster endpoint
+                type: boolean
+              isolate:
+                description: If true vcluster and its workloads will run in an isolated
+                  environment
+                type: boolean
+              kubernetesVersion:
+                description: The kubernetes version to use (e.g. v1.20). Patch versions
+                  are not supported
                 type: string
             type: object
           status:

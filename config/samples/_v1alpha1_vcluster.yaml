@@ -3,4 +3,12 @@ kind: VCluster
 metadata:
   name: vcluster-sample
 spec:
-  # TODO(user): Add fields here
+  chart:
+    name: vcluster1
+    repo: https://charts.loft.sh
+    version: 0.7.1
+  disableIngressSync: false
+  distro: k3s
+  expose: true
+  isolate: true
+  kubernetesVersion: v1.20

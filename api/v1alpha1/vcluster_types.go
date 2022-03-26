@@ -28,8 +28,36 @@ type VClusterSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of VCluster. Edit vcluster_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Chart VClusterSpecChart `json:"chart,omitempty"`
+
+	// If true the virtual cluster will not sync any ingresses
+	DisableIngressSync bool `json:"disableIngressSync,omitempty"`
+
+	// Kubernetes distro to use for the virtual cluster. Allowed distros: k3s, k0s, k8s, eks (default "k3s")
+	Distro string `json:"distro,omitempty"`
+
+	// If true will create a load balancer service to expose the vcluster endpoint
+	Expose bool `json:"expose,omitempty"`
+
+	// If true vcluster and its workloads will run in an isolated environment
+	Isolate bool `json:"isolate,omitempty"`
+
+	// The kubernetes version to use (e.g. v1.20). Patch versions are not supported
+	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
+}
+
+type VClusterSpecChart struct {
+	// The virtual cluster chart name to use (default "vcluster")
+	// +optional
+	Name string `json:"name,omitempty"`
+
+	// The virtual cluster chart repo to use (default "https://charts.loft.sh")
+	// +optional
+	Repo string `json:"repo,omitempty"`
+
+	// The virtual cluster chart version to use (e.g. v0.4.0) (default "0.7.1")
+	// +optional
+	Version string `json:"version,omitempty"`
 }
 
 // VClusterStatus defines the observed state of VCluster
